@@ -1,24 +1,27 @@
-# README
+# Rails Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Built With
 
-Things you may want to cover:
+- Ruby, Rails, PostgreSQL
 
-* Ruby version
+## Author
 
-* System dependencies
+👤 **Okoye Charles**
 
-* Configuration
+- GitHub: [@okoyecharles](https://github.com/okoyecharles)
+- Twitter: [@okoyecharles_](https://twitter.com/okoyecharles_)
+- LinkedIn: [Charles Okoye](https://linkedin.com/in/charles-k-okoye/)
 
-* Database creation
+## 🤝 Contributing
 
-* Database initialization
+Contributions, issues, and feature requests are welcome!
 
-* How to run the test suite
+Feel free to check the [issues page](../../issues/).
 
-* Services (job queues, cache servers, search engines, etc.)
+## Show your support
 
-* Deployment instructions
+Give a ⭐️ if you like this project!
 
-* ...
+## Acknowledgments
+
+- Thanks to Microverse for this project!
