@@ -6,6 +6,7 @@
 
 # Ignore auto-generated file (on MacOS)
 .DS_Store
+node_modules/
 
 # Ignore bundler config.
 /.bundle
