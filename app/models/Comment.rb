@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
 
   after_create :update_comment_counter
 
+  validates :text, presence: true
+
   def update_comment_counter
     post.update(comments_counter: post.comments.size)
   end
