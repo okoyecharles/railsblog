@@ -1,0 +1,27 @@
+<section>
+  <header>
+    <img src=<%= @user.photo %> alt="<%= @user.name %>'s photo">
+    <div>
+      <h2><%= @user.name %></h2>
+      <p>Number of posts:
+        <%= @user.posts_counter %></p>
+    </div>
+  </header>
+  <article>
+    <h3>Bio</h3>
+    <p><%= @user.bio %></p>
+  </article>
+  <% @user.recent_posts.each_with_index do |post, index| %>
+    <article>
+      <h3>Post #<%= index + 1 %></h3>
+      <p><%= post.text.truncate_words(10, omission: '...') %></p>
+      <div>
+        <span>Comments:
+          <%= post.comments_counter or '0' %></span>
+        <span>Likes:
+          <%= post.likes_counter or '0' %></span>
+      </div>
+    </article>
+  <% end %>
+  <button>See all posts</button>
+</section>

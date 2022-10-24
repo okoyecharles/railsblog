@@ -1,0 +1,19 @@
+<section>
+  <article>
+    <header>
+      <h2>Post #<%= @post.id %> by <%= @user.name %></h2>
+       <div>
+          <span>Comments:
+            <%= @post.comments_counter or '0' %></span>
+          <span>Likes:
+            <%= @post.likes_counter or '0' %></span>
+        </div>
+    </header>
+    <%= @post.text %>
+  </article>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li><%= comment.author.name %>: <%= comment.text %></li>
+    <% end %>
+  </ul>
+</section>

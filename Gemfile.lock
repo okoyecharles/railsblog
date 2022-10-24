@@ -89,6 +89,7 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
+    erb-formatter (0.3.0)
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -247,6 +248,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  erb-formatter
   importmap-rails
   jbuilder
   pg (~> 1.1)
