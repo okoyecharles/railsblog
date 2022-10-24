@@ -1,7 +1,7 @@
 <section>
-  <article>
-    <header>
-      <h2>Post #<%= @post.id %> by <%= @user.name %></h2>
+  <article class="container">
+    <header class="flex">
+      <h2>Post #<%= @post_idx %> by <%= @user.name %></h2>
        <div>
           <span>Comments:
             <%= @post.comments_counter or '0' %></span>
@@ -11,9 +11,11 @@
     </header>
     <%= @post.text %>
   </article>
-  <ul>
+  <% if @post.comments.length != 0 %>
+    <ul class="container">
     <% @post.comments.each do |comment| %>
       <li><%= comment.author.name %>: <%= comment.text %></li>
     <% end %>
   </ul>
+  <% end %>
 </section>
