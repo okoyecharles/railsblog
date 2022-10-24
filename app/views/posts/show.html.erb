@@ -1,0 +1,21 @@
+<section>
+  <article class="container">
+    <header class="flex">
+      <h2>Post #<%= @post_idx %> by <%= @user.name %></h2>
+       <div>
+          <span>Comments:
+            <%= @post.comments_counter or '0' %></span>
+          <span>Likes:
+            <%= @post.likes_counter or '0' %></span>
+        </div>
+    </header>
+    <%= @post.text %>
+  </article>
+  <% if @post.comments.length != 0 %>
+    <ul class="container">
+    <% @post.comments.each do |comment| %>
+      <li><%= comment.author.name %>: <%= comment.text %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</section>

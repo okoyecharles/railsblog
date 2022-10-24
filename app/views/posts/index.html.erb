@@ -1,0 +1,36 @@
+<section class="main">
+  <header class="user">
+    <img src=<%= @user.photo %> alt="<%= @user.name %>'s photo">
+    <div class="container">
+      <h2><%= @user.name %></h2>
+      <p>Number of posts:
+        <%= @user.posts_counter %></p>
+    </div>
+  </header>
+  <% @user.posts.each_with_index do |post, index| %>
+      <article>
+        <div class="container">
+          <h3>Post #<%= index + 1 %></h3>
+          <p><%= post.text.truncate_words(10, omission: '...') %></p>
+          <div>
+            <span>Comments:
+              <%= post.comments_counter or '0' %></span>
+            <span>Likes:
+              <%= post.likes_counter or '0' %></span>
+          </div>
+        </div>
+        <% if post.comments.length != 0 %>
+          <ul class = "container">
+            <% post.comments.each do |comment| %>
+              <li><%= comment.author.name %>: <%= comment.text %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </article>
+  <% end %>
+  <footer class="mt">
+    <% @user.posts.each_with_index do |post, index| %>
+      <%= link_to index + 1, "./posts/#{index + 1}", class: "btn" %>
+    <% end %>
+  </footer>
+</section>

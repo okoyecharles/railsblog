@@ -1,0 +1,29 @@
+<section class = "main">
+  <header class="user">
+    <img src=<%= @user.photo %> alt="<%= @user.name %>'s photo">
+    <div class="container">
+      <h2><%= @user.name %></h2>
+      <p>Number of posts:
+        <%= @user.posts_counter %></p>
+    </div>
+  </header>
+  <article class="container">
+    <h3>Bio</h3>
+    <p><%= @user.bio %></p>
+  </article>
+  <% @user.recent_posts.each_with_index do |post, index| %>
+    <%= link_to "./#{@user.id}/posts/#{index + 1}" do %>
+      <article class="container">
+        <h3>Post #<%= index + 1 %></h3>
+        <p><%= post.text.truncate_words(10, omission: '...') %></p>
+        <div>
+          <span>Comments:
+            <%= post.comments_counter or '0' %></span>
+          <span>Likes:
+            <%= post.likes_counter or '0' %></span>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+  <%= link_to "See all posts", user_posts_path(@user.id), class: "btn" %>
+</section>
