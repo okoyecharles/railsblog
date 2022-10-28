@@ -11,15 +11,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @post = @user.posts.new
+    @post = Post.new
 
     render :new, locals: { post: @post }
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @post = @user.posts.new(post_params)
+    @post = current_user.posts.new(post_params)
     @post.comments_counter = 0
     @post.likes_counter = 0
 
@@ -27,7 +25,7 @@ class PostsController < ApplicationController
       format.html do
         if @post.save
           flash[:success] = 'Post created successfully!'
-          redirect_to user_posts_path(@user)
+          redirect_to user_posts_path(current_user)
         else
           flash[:error] = 'There was a problem creating the Post'
           render :new, locals: { post: @post }
