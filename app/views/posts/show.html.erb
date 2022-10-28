@@ -18,7 +18,7 @@
     <% end %>
     </ul>
   <% end %>
-  <%= form_with url: "users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
-    <%= f.submit 'Likes' %>
+  <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
+    <%= f.submit 'Like' %>
   <% end %>
 </section>
