@@ -2,45 +2,28 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe 'validations' do
-    author = User.create(name: 'Charles', photo: 'photo.png', bio: 'Love Coding', posts_counter: 0)
-    subject { Post.new(author: author, title: 'Post', likes_counter: 5, comments_counter: 5) }
+    author = User.new(name: 'Charles', photo: 'https://i.im.ge/2022/10/30/2R6c3h.man.jpg', bio: 'Teacher from Nigeria.',
+                      posts_counter: 0)
+    subject do
+      Post.new(author: author, title: 'Hello', text: 'This is my test post', comments_counter: 0, likes_counter: 0)
+    end
 
-    before { subject.save }
+    it 'should be valid' do
+      expect(subject).to be_valid
+    end
 
-    it 'title should be present' do
+    it 'should have a title' do
       subject.title = nil
       expect(subject).to_not be_valid
     end
 
-    it 'title should have a maximum length of 250' do
-      subject.title = Array.new(251, 'a').join
-      expect(subject).to_not be_valid
-
-      subject.title = 'Amazing'
-      expect(subject).to be_valid
-    end
-
-    it 'author should be present' do
-      subject.author = nil
+    it 'title should have a maximum of 250' do
+      subject.title = 'x' * 300
       expect(subject).to_not be_valid
     end
 
-    it 'comments counter should be greater than or equal to 0' do
-      subject.comments_counter = -1
-      expect(subject).to_not be_valid
-    end
-
-    it 'likes counter should be greater than or equal to 0' do
-      subject.likes_counter = -1
-      expect(subject).to_not be_valid
-    end
-
-    describe 'should test methods in post model' do
-      before { 5.times { |comment| Comment.create(author: author, text: "Comment #{comment}", post: subject) } }
-
-      it 'post should have five recent comments' do
-        expect(subject.recent_comments).to eq(subject.comments.last(5))
-      end
+    it 'recent_comments should return 5 most recent comments' do
+      expect(subject.recent_comments).to eq subject.comments.last(5)
     end
   end
 end

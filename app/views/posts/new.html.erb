@@ -1,5 +1,5 @@
-<section class="main">
-  <h1>Create a post</h1>
+<section class="main center">
+  <h2>New Post</h2>
   <%= form_with model: @post, url: user_posts_path, method: :post, locals: true, scope: :new_post do |f| %>
     <div>
       <%= f.label :title %>
@@ -9,6 +9,6 @@
       <%= f.label :text %>
       <%= f.text_area :text %>
     </div>
-    <%= f.submit %>
+    <%= f.submit 'Create Post' %>
   <% end %>
 </section>

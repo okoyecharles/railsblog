@@ -1,10 +1,10 @@
-<section class="main">
-  <h1>Add a comment</h1>
-  <%= form_with model: @comment, url: user_post_comments_path, method: :post, locals: true, scope: :comment do |f| %>
+<section class="main center">
+  <h2>Write a Comment</h2>
+  <%= form_with model: @comment, url: user_post_comments_path, locals: true, method: :post, scope: :new_comment do |f| %>
     <div>
       <%= f.label :text %>
-      <%= f.text_area :text %>
+      <%= f.text_field :text %>
     </div>
-    <%= f.submit 'Add Comment' %>
+    <%= f.submit 'Comment' %>
   <% end %>
 </section>
