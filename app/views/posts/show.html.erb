@@ -1,4 +1,4 @@
-<section>
+<section class="main">
   <article class="container">
     <header class="flex">
       <h2>Post #<%= @post_idx %> by <%= @user.name %></h2>
@@ -16,6 +16,9 @@
     <% @post.comments.each do |comment| %>
       <li><%= comment.author.name %>: <%= comment.text %></li>
     <% end %>
-  </ul>
+    </ul>
+  <% end %>
+  <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
+    <%= f.submit 'Like' %>
   <% end %>
 </section>
