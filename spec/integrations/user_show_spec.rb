@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User', type: :system do
+RSpec.describe 'User show', type: :feature do
   before(:each) do
     @first_user = User.create(
       name: 'Charles',
@@ -35,37 +35,7 @@ RSpec.describe 'User', type: :system do
     @users = User.all
   end
 
-  describe 'index page' do
-    before(:each) { visit users_path }
-
-    scenario 'shows the username of all other users' do
-      @users.each do |user|
-        expect(page).to have_content(user.name)
-      end
-    end
-
-    scenario 'displays profile picture for each user' do
-      @users.each do |user|
-        expect(page).to have_css("img[src*='#{user.photo}']")
-      end
-    end
-
-    scenario 'displays number of posts each user has written' do
-      @users.each do |user|
-        expect(page).to have_content "Number of posts: #{user.posts_counter}"
-      end
-    end
-
-    scenario 'users directs to show page when clicked' do
-      within all('.user')[0] do
-        click_link @first_user.name
-        expect(page).to have_current_path user_path(@first_user)
-        visit users_path
-      end
-    end
-  end
-
-  describe 'show page' do
+  describe 'integration' do
     before(:each) { visit user_path @first_user }
 
     scenario 'displays user\'s profile picture' do
