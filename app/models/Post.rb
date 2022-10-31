@@ -14,6 +14,6 @@ class Post < ApplicationRecord
   end
 
   def recent_comments
-    comments.last(5)
+    comments.first(5)
   end
 end
