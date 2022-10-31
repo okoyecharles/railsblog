@@ -46,7 +46,7 @@ RSpec.describe PostsController, type: :request do
     end
 
     it 'response body includes correct placeholder text' do
-      expect(response.body).to include 'Post'
+      expect(response.body).to include 'by'
     end
   end
 end

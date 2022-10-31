@@ -9,9 +9,9 @@
     <p><%= @user.bio %></p>
   </article>
 
-  <% @user.recent_posts.each_with_index do |post, post_idx| %>
+  <% @user.recent_posts.each do |post| %>
     <article class="container post">
-      <h3>Post <%= post_idx + 1 %></h3>
+      <h3><%= post.title %></h3>
       <p><%= post.text.truncate(50, omission: '...' ) %></p>
       <div class="font-sm right">
         Comments: <%= post.comments_counter || 0 %> Likes: <%= post.likes_counter || 0 %>
