@@ -1,8 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :request do
+  before(:each) do
+    @user = User.create(
+      name: 'Charles',
+      photo: 'https://i.im.ge/2022/10/30/2R6c3h.man.jpg',
+      bio: 'Teacher from Nigeria.',
+      posts_counter: 0
+    )
+
+    @post = Post.create(
+      author: @user,
+      title: 'Hello',
+      text: 'This is my test post',
+      comments_counter: 0,
+      likes_counter: 0
+    )
+  end
+
   describe 'GET #index' do
-    before(:example) { get user_posts_path(1) }
+    before(:example) { get user_posts_path(@user) }
 
     it 'response status was correct' do
       expect(response).to have_http_status :ok
@@ -18,10 +35,9 @@ RSpec.describe PostsController, type: :request do
   end
 
   describe 'GET #show' do
-    before(:example) { get user_post_path(1, 1) }
+    before(:example) { get user_post_path(@user, @post) }
 
     it 'response status was correct' do
-      p response.body
       expect(response).to have_http_status :ok
     end
 
