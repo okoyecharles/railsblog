@@ -1,24 +1,24 @@
 <section class="main">
-  <article class="container">
-    <header class="flex">
-      <h2>Post #<%= @post_idx %> by <%= @user.name %></h2>
-       <div>
-          <span>Comments:
-            <%= @post.comments_counter or '0' %></span>
-          <span>Likes:
-            <%= @post.likes_counter or '0' %></span>
-        </div>
-    </header>
-    <%= @post.text %>
-  </article>
-  <% if @post.comments.length != 0 %>
-    <ul class="container">
-    <% @post.comments.each do |comment| %>
-      <li><%= comment.author.name %>: <%= comment.text %></li>
+    <article class="container">
+    <h2>Post #<%= @user.posts.find_index(@post) + 1 %> by <%= @user.name %></h2>
+      <p><%= @post.text %></p>
+      <div class="font-sm right">
+        Comments: <%= @post.comments_counter || 0 %> Likes: <%= @post.likes_counter || 0 %>
+      </div>
+    </article>
+    <div class="actions">
+      <%= form_with model: @like, url: user_post_likes_path(@user, @post), method: :post do |f| %>
+        <%= f.submit 'Like' %>
+      <% end %>
+      <%= link_to new_user_post_comment_path(@user, @post) do %>
+        <button>Comment</button>
+      <% end %>
+    </div>
+    <div class="comments">
+      <% @post.comments.each do |comment| %>
+      <div class='comment'>
+        <span><%= comment.author.name %>: <%= comment.text %></span>
+      </div>
     <% end %>
-    </ul>
-  <% end %>
-  <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
-    <%= f.submit 'Like' %>
-  <% end %>
+    </div>
 </section>
