@@ -6,7 +6,7 @@
         Comments: <%= @post.comments_counter || 0 %> Likes: <%= @post.likes_counter || 0 %>
       </div>
     </article>
-    <div class="actions">
+    <div class="actions like-comment">
       <%= form_with model: @like, url: user_post_likes_path(@user, @post), method: :post do |f| %>
         <%= f.submit 'Like' %>
       <% end %>
