@@ -21,6 +21,7 @@
       <% post.recent_comments.each do |comment| %>
         <div class='comment'>
           <span><%= comment.author.name %>: <%= comment.text %></span>
+          <%= link_to 'delete', user_post_comment_path(post.author_id, post.id, comment.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
         </div>
       <% end %>
     </div>
