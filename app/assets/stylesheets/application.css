@@ -15,10 +15,15 @@ input[type="submit"] {
   border: none;
   box-shadow: 0 0 0 0.025rem;
   cursor: pointer;
+  background-color: rgb(95, 201, 247);
 }
 
 a {
   color: rgb(0, 64, 107);
+}
+
+a:has( button ) {
+  text-decoration: none;
 }
 
 a:hover {
@@ -99,6 +104,9 @@ form[hidden] {
 
 .comment {
   padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .comment:not(:last-child) {
@@ -125,4 +133,18 @@ form[hidden] {
 
 .rounded {
   border-radius: 50%;
+}
+
+.success {
+  background: rgb(133, 247, 133);
+}
+
+.danger {
+  background-color: rgb(233, 108, 80);
+}
+
+.flash {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem #ddd;
 }

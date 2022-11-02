@@ -13,15 +13,23 @@
       <%= link_to new_user_post_comment_path(@user, @post) do %>
         <button>Comment</button>
       <% end %>
-      <%= link_to user_post_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-        <button>Delete</button>
+      <% if can? :destroy, @post %>
+        <%= link_to user_post_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <button class="danger">Delete</button>
+        <% end %>
       <% end %>
     </div>
     <div class="comments">
       <% @post.comments.each do |comment| %>
-      <div class='comment'>
-        <span><%= comment.author.name %>: <%= comment.text %></span>
-      </div>
-    <% end %>
+        <div class='comment'>
+          <span>
+            <%= comment.author.name %>: <%= comment.text %>
+          </span>
+          <% if can? :destroy, comment %>
+            <%= link_to 'delete', user_post_comment_path(@post.author_id, @post.id, comment.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
+    <%= link_to 'Back', user_posts_path %>
 </section>
