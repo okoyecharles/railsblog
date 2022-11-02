@@ -16,8 +16,8 @@ body {
   gap: 0.5em;
   align-items: center;
   list-style: none;
-  margin: none;
-  padding: none;
+  margin: 0;
+  padding: 0;
 }
 
 .main-nav ul li:nth-child(1) {
@@ -26,7 +26,6 @@ body {
 
 button,
 input[type="submit"] {
-  background-color: #eee;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   border: none;
@@ -39,7 +38,7 @@ a {
   color: rgb(0, 64, 107);
 }
 
-a:has( button ) {
+a:has(button) {
   text-decoration: none;
 }
 

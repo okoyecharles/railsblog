@@ -8,6 +8,7 @@ class Ability
     can %i[update destroy], Comment, author_id: user.id
 
     return unless user.role == 'admin'
+
     can [:manage], Post
     can [:manage], Comment
   end
