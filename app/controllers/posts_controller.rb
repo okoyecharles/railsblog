@@ -3,6 +3,16 @@ class PostsController < ApplicationController
     @user = User.includes(posts: [:comments]).find(params[:user_id])
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:success] = 'Object was successfully deleted.'
+    else
+      flash[:notice] = 'Something went wrong'
+    end
+    redirect_to users_path
+  end
+
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
