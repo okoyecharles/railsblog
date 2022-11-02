@@ -46,6 +46,10 @@ form :is(input:not([type='submit']), textarea) {
   padding: 0.25rem 0.5rem;
 }
 
+form[hidden] {
+  display: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;

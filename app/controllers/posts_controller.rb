@@ -6,11 +6,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      flash[:success] = 'Object was successfully deleted.'
+      @post.update_posts_counter
+      flash[:success] = 'Post was successfully deleted.'
     else
       flash[:notice] = 'Something went wrong'
     end
-    redirect_to users_path
+    redirect_to user_posts_path
   end
 
   def show
