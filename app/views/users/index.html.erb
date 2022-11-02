@@ -1,6 +1,5 @@
 <section class="main">
   <h2>List of users:</h2>
-  <img src="<%= @current_user&.photo || '' %>" class="small rounded" alt="current user">
   <% @users.sort_by(&:id).each do |user| %>
     <%= render "cards/user", user: user %>
   <% end %>
