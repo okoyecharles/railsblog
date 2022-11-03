@@ -9,7 +9,6 @@ class Ability
 
     return unless user.role == 'admin'
 
-    can [:manage], Post
-    can [:manage], Comment
+    can [:manage], :all
   end
 end
