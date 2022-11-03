@@ -1,6 +1,19 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(posts: [:comments]).find(params[:user_id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      @post.update_posts_counter
+      flash[:success] = 'Post was successfully deleted.'
+    else
+      flash[:notice] = 'Something went wrong'
+    end
+    redirect_to user_posts_path
   end
 
   def show

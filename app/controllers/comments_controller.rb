@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def new
-    @comment = current_user.posts.first.comments.new
+    post = Post.find(params[:post_id])
+    @comment = post.comments.new
   end
 
   def create
@@ -17,6 +18,17 @@ class CommentsController < ApplicationController
     else
       flash[:error] = 'Something went wrong'
       render 'new'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      @comment.update_comment_counter
+      flash[:success] = 'Comment was successfully deleted.'
+      redirect_to user_posts_path
+    else
+      flash[:notice] = 'Something went wrong'
     end
   end
 

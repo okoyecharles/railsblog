@@ -11,8 +11,16 @@
   </head>
 
   <body>
-    <p class="notice-flash"><%= notice %></p>
-    <p class="alert-flash"><%= alert %></p>
+    <nav class="main-nav">
+      <ul>
+        <li><%= @current_user&.name || 'Guest' %><%= ' [admin]' if current_user&.role === 'admin' %></li>
+        <li>
+          <img src="<%= @current_user&.photo || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' %>" class="small rounded" alt="c_u">
+        </li>
+      </ul>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

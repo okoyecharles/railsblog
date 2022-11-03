@@ -7,18 +7,39 @@ body {
   padding: 0;
 }
 
+.main-nav {
+  border-bottom: 0.05rem solid;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li:nth-child(1) {
+  margin-left: auto;
+}
+
 button,
 input[type="submit"] {
-  background-color: #eee;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   border: none;
   box-shadow: 0 0 0 0.025rem;
   cursor: pointer;
+  background-color: rgb(95, 201, 247);
 }
 
 a {
   color: rgb(0, 64, 107);
+}
+
+a:has(button) {
+  text-decoration: none;
 }
 
 a:hover {
@@ -44,6 +65,10 @@ form :is(input:not([type='submit']), textarea) {
   outline: none;
   border: 0.05rem solid #aaa;
   padding: 0.25rem 0.5rem;
+}
+
+form[hidden] {
+  display: none;
 }
 
 .main {
@@ -95,6 +120,9 @@ form :is(input:not([type='submit']), textarea) {
 
 .comment {
   padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .comment:not(:last-child) {
@@ -113,4 +141,26 @@ form :is(input:not([type='submit']), textarea) {
 
 .right {
   float: right;
+}
+
+.small {
+  width: 2.5rem;
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.success {
+  background: rgb(133, 247, 133);
+}
+
+.danger {
+  background-color: rgb(233, 108, 80);
+}
+
+.flash {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem #ddd;
 }
