@@ -1,0 +1,11 @@
+<div class="user-auth-button">
+    <% if current_user %>
+    <%= link_to destroy_user_session_path do %>
+      <button>Sign Out</button>
+    <% end %>
+  <% else %>
+    <%= link_to user_session_path do %>
+      <button>Log In</button>
+    <% end %>
+  <% end %>
+</div>

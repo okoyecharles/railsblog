@@ -20,7 +20,7 @@ body {
   padding: 0;
 }
 
-.main-nav ul li:nth-child(1) {
+.main-nav ul li.profile {
   margin-left: auto;
 }
 
@@ -159,8 +159,34 @@ form[hidden] {
   background-color: rgb(233, 108, 80);
 }
 
+.primary {
+  background-color: rgb(95, 201, 247);
+}
+
 .flash {
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 0.5rem #ddd;
+}
+
+.badge {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  transform: scale(0.9);
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 0 0.05rem black, 0 0 0.5rem rgb(215, 215, 215);
+}
+
+.logo {
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.user-auth-button {
+  padding-top: 0.5rem;
 }

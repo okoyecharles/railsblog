@@ -1,0 +1,21 @@
+<nav class="main-nav">
+  <ul>
+    <li class="logo">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li class="profile"><%= @current_user&.name || 'Guest' %></li>
+    <% if current_user&.admin? %>
+      <li class="badge primary">admin</li>
+    <% end %>
+    <li>
+      
+      <% if current_user %>
+        <%= link_to user_path(current_user) do %>
+          <img src="<%= @current_user.photo %>" class="small rounded" alt="c_u">
+        <% end %>
+      <% else %> 
+        <img src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' class="small rounded" alt="c_u">
+      <% end %>
+    </li>
+  </ul>
+</nav>
