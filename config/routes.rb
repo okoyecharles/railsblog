@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: %i[index show] do
         resources :posts, only: %i[index show create] do
-          resources :comments, only: %i[index create]
+          resources :comments
         end
       end
     end
