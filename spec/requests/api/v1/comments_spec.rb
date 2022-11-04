@@ -6,13 +6,11 @@ RSpec.describe 'api/v1/comments', type: :request do
     @post = Post.create(author_id: @user.id, title: 'Hello', text: 'This is my test post')
   end
 
-    
   path '/api/v1/users/{user_id}/posts/{post_id}/comments' do
     # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
     parameter name: 'post_id', in: :path, type: :string, description: 'post_id'
 
-  
     get('list comments') do
       response(200, 'successful') do
         let(:user_id) { @user.id }

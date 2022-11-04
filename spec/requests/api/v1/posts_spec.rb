@@ -1,15 +1,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/posts', type: :request do
-
   path '/api/v1/users/{user_id}/posts' do
-
     get('list posts') do
       response(200, 'successful') do
         parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
         user = User.create(name: 'Example User', photo: 'example.jpg', bio: 'Teacher from Nigeria.')
-        post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my test post')
 
         let(:user_id) { user.id }
 
