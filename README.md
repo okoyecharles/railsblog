@@ -63,6 +63,10 @@ In order to run tests for this project make sure you have installed all previous
   bundle exec rspec
   ```
 
+### API
+
+For more information about this project's API visit [this link](https://app.swaggerhub.com/apis-docs/OkoyeCharles/railsblog-api-v_1/v1)
+
 ## Author
 
 👤 **Okoye Charles**
