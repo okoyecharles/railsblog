@@ -1,0 +1,194 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: post_id
+      in: path
+      description: post_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list comments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create comment
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author_id:
+                  type: integer
+                post_id:
+                  type: integer
+                text:
+                  type: string
+              required:
+              - author_id
+              - post_id
+              - text
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/new":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: post_id
+      in: path
+      description: post_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: new comment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}/edit":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: post_id
+      in: path
+      description: post_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: edit comment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: post_id
+      in: path
+      description: post_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show comment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts":
+    get:
+      summary: list posts
+      parameters:
+      - name: user_id
+        in: path
+        description: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author_id:
+                  type: integer
+                title:
+                  type: string
+                text:
+                  type: string
+              required:
+              - author_id
+              - title
+              - text
+  "/api/v1/users/{user_id}/posts/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show post
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users":
+    get:
+      summary: list users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
