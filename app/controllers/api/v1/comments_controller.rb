@@ -17,10 +17,13 @@ class Api::V1::CommentsController < ActionController::API
   end
 
   def create
+    post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
+    @comment.author = current_user
+    @comment.post = post
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: post, status: :created
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
