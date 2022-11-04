@@ -5,16 +5,13 @@ RSpec.describe PostsController, type: :request do
     @user = User.create(
       name: 'Charles',
       photo: 'https://i.im.ge/2022/10/30/2R6c3h.man.jpg',
-      bio: 'Teacher from Nigeria.',
-      posts_counter: 0
+      bio: 'Teacher from Nigeria.'
     )
 
     @post = Post.create(
       author: @user,
       title: 'Hello',
-      text: 'This is my test post',
-      comments_counter: 0,
-      likes_counter: 0
+      text: 'This is my test post'
     )
   end
 
